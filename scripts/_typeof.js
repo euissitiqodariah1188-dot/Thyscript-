@@ -1,0 +1,26 @@
+'use strict';
+const Thy = require('../src/index.js');
+const src = `const table x = 5
+print(typeof x)
+class A: end()
+const table a = new A()
+print(a instanceof A)
+`;
+(async () => {
+  try {
+    const lexer = new Thy.Lexer(src, '<t>');
+    const tokens = lexer.tokenize();
+    const parser = new Thy.Parser(tokens, src, '<t>');
+    const ast = parser.parse();
+    const c2 = new Thy.JITCompiler(ast, src, '<t>', {});
+    const compiled = c2.compile();
+    console.log('COMPILED tail:\n' + compiled.split('\n').slice(-25).join('\n'));
+    const runtime = new Thy.ThyRuntime({});
+    await runtime.init();
+    const ctx = runtime.buildContext();
+    const r = await Promise.race([c2.execute(compiled, ctx), new Promise((_, rej) => setTimeout(() => rej(new Error('TIMEOUT')), 3000))]);
+    console.log('EXEC OK', r);
+  } catch (e) {
+    console.log('ERR', e.message, '\n', e.stack && e.stack.split('\n').slice(0,3).join('\n'));
+  } finally { process.exit(0); }
+})();

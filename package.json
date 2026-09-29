@@ -1,0 +1,55 @@
+{
+  "name": "thyscript",
+  "version": "3.0.0",
+  "description": "ThyScript v3.0 - A blazing-fast programming language on Node.js with public internet hosting, full npm ecosystem access, JIT compiler, and hundreds of built-in features",
+  "main": "src/index.js",
+  "bin": {
+    "thy-node": "bin/thy-node.js",
+    "thy": "bin/thy.js",
+    "thys": "bin/thys.js"
+  },
+  "scripts": {
+    "test": "node tests/run-tests.js",
+    "build": "node scripts/build.js"
+  },
+  "keywords": [
+    "thyscript",
+    "programming-language",
+    "jit-compiler",
+    "machine-learning",
+    "physics-simulation",
+    "web",
+    "full-stack",
+    "game-engine"
+  ],
+  "author": "ThyScript Team",
+  "license": "MIT",
+  "dependencies": {
+    "acorn": "^8.11.3",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
+    "commander": "^11.1.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fast-json-stringify": "^5.9.1",
+    "figlet": "^1.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "localtunnel": "^2.0.2",
+    "mathjs": "^12.2.1",
+    "node-cache": "^5.1.2",
+    "ora": "^5.4.1",
+    "socket.io": "^4.6.1",
+    "toml": "^3.0.0",
+    "uuid": "^9.0.1",
+    "ws": "^8.16.0",
+    "yaml": "^2.3.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
